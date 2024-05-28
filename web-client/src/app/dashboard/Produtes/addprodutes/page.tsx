@@ -1,8 +1,11 @@
 import React from 'react'
-
+import NewProduct from '@/ui/produtes/createproduct'
 const page = () => {
   return (
-    <div> add product</div>
+    <div> 
+
+      <NewProduct/>
+    </div>
   )
 }
 
