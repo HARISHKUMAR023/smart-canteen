@@ -14,17 +14,18 @@ import { Home } from './pages/Home';
 
 const Tab = createMaterialBottomTabNavigator();
 export default function App() {
-  color = "white";
+  color = "#e11d48";
   return (
     <NavigationContainer >
-    <PaperProvider className="h-full w-full bg-black">
+    <PaperProvider className="h-full w-full bg-black drop-shadow-xl">
 
     <Tab.Navigator
     inactiveColor='white'
-    activeColor="black"
+    activeColor="#e11d48"
     shifting={true}
-    
-    barStyle={{ backgroundColor: '#3aab47' }}
+     activeIndicatorStyle={{ backgroundColor: 'white' }}
+
+    barStyle={{ backgroundColor: '#e11d48' }}
     // tabBarActiveTintColor="black" // This will set the color of the active icon to black
   // tabBarInactiveTintColor="white"
  
@@ -32,7 +33,7 @@ export default function App() {
     <Tab.Screen
       name="Home"
       component={Home}
-      
+  
       options={{
         tabBarIcon: ({ color }) => (
 <Entypo name="shop" size={24} color={color} />
