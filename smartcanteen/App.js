@@ -10,16 +10,34 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { Home } from './pages/Home';
-
-
+import { auth } from './firebaseConfig';
+import AuthStack from './pages/Authstack';
+import LogoutScreen from './pages/Logout';
 const Tab = createMaterialBottomTabNavigator();
 export default function App() {
+  const [user, setUser] = useState(null);
+  // const iconColor = 'black';
+  
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   color = "#e11d48";
   return (
     <NavigationContainer >
+     
     <PaperProvider className="h-full w-full bg-black drop-shadow-xl">
 
-    <Tab.Navigator
+    {user ? ( <Tab.Navigator
     inactiveColor='white'
     activeColor="#e11d48"
     shifting={true}
@@ -70,7 +88,7 @@ export default function App() {
     />
     <Tab.Screen
       name="LogOut"
-      component={Produtes}
+      component={LogoutScreen}
       options={{
         tabBarIcon: ({ color }) => (
           <Entypo name="log-out" size={24} color={color} />
@@ -78,6 +96,9 @@ export default function App() {
       }}
     />
   </Tab.Navigator>
+    ) : (
+      <AuthStack />
+    )}
   </PaperProvider>
     </NavigationContainer>
     // <View className="" >
