@@ -2,3 +2,21 @@ node_modules/
 *.log
 *.ts
 *.tsx
+
+# Ignore all log files
+*.log
+# Ignore the .git directory
+.git/
+# Ignore all .map files
+*.map
+# Ignore other directories possibly created by your IDE
+.idea/
+.vscode/
+# Ignore build artifacts, if any
+build/
+dist/
+# Ignore test files/directories
+__tests__/
+*.test.js
+*.test.ts
+*.test.tsx
