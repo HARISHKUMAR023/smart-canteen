@@ -31,7 +31,7 @@ export const Card = () => {
           <Text className="font-bold text-gray-500 dark:text-gray-400 px-2 mb-2">
           ₹{item.price}
           </Text>
-          <TouchableOpacity  className="flex flex-row items-center bg-rose-600 p-2 rounded-md " onPress={() => handleAddToCart(item)}>
+          <TouchableOpacity  className="flex flex-row items-center bg-primary p-2 rounded-md " onPress={() => handleAddToCart(item)}>
           <Fontisto name="shopping-basket-add" size={20} className="text-white " color={color}  />
             <Text className="text-white font-bold pl-1" >Add to Cart</Text>
           </TouchableOpacity>

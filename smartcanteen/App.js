@@ -12,6 +12,7 @@ import { Fontisto } from '@expo/vector-icons';
 import { Home } from './pages/Home';
 import { auth } from './firebaseConfig';
 import AuthStack from './pages/Authstack';
+import { FontAwesome } from '@expo/vector-icons';
 import LogoutScreen from './pages/Logout';
 const Tab = createMaterialBottomTabNavigator();
 export default function App() {
@@ -38,12 +39,19 @@ export default function App() {
     <PaperProvider className="h-full w-full bg-black drop-shadow-xl">
 
     {user ? ( <Tab.Navigator
-    inactiveColor='white'
-    activeColor="#e11d48"
+    inactiveColor='black'
+    activeColor="#FF4500"
     shifting={true}
      activeIndicatorStyle={{ backgroundColor: 'white' }}
-
-    barStyle={{ backgroundColor: '#e11d48' }}
+ 
+    barStyle={{ backgroundColor: '#fff' , borderTopColor: 'gray', borderTopWidth: 1,shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity:  0.16,
+    shadowRadius: 1.51,
+    elevation: 2}}
     // tabBarActiveTintColor="black" // This will set the color of the active icon to black
   // tabBarInactiveTintColor="white"
  
@@ -51,7 +59,7 @@ export default function App() {
     <Tab.Screen
       name="Home"
       component={Home}
-  
+   
       options={{
         tabBarIcon: ({ color }) => (
 <Entypo name="shop" size={24} color={color} />
@@ -91,7 +99,7 @@ export default function App() {
       component={LogoutScreen}
       options={{
         tabBarIcon: ({ color }) => (
-          <Entypo name="log-out" size={24} color={color} />
+          <FontAwesome name="user" size={24} color={color} />
         ),
       }}
     />

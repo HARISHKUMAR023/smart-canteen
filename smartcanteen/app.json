@@ -21,13 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.harish023.smartcanteen"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "3e584ead-182f-4ccc-9cc8-ccccb5e24677"
+      }
+    }
   }
 }

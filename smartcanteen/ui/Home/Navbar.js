@@ -4,7 +4,7 @@ import { Image } from 'expo-image';
 import { Asset } from 'expo-asset';
 export const Navbar = () => {
   return (
-    <View style={{ marginTop: 38, padding: 1 }} className="bg-rose-600  p-4 flex flex-row justify-between rounded-lg mx-6 drop-shadow-xl">
+    <View style={{ marginTop: 38, padding: 1 }} className="bg-primary  p-4 flex flex-row justify-between rounded-lg mx-6 drop-shadow-xl">
         <View>
         <Text className="text-white font-bold text-lg rop-shadow-xl">Hii,Harish</Text>
       <Text className="text-white rop-shadow-xl">smart canteen</Text>

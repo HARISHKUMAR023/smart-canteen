@@ -12,7 +12,7 @@ export const Home = () => {
   //   <Navbar/>
   //   {/* <Carosual/> */}
   // </ImageBackground>
-  <View className="bg-rose-100/50 h-full">
+  <View className="bg-secondary h-full">
     <Navbar/>
     {/* <Catagory/> */}
     <View className="flex flex-row justify-between mx-4 p-4">
