@@ -15,7 +15,7 @@ const HandleSignOut = () => {
 };
 
 const LogoutScreen = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <View style={styles.container}>

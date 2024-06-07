@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/config-plugins": "^8.0.4",
     "@expo/vector-icons": "^14.0.1",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/material-bottom-tabs": "^6.2.28",
