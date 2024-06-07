@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Provider as PaperProvider } from "react-native-paper";
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {  Text, View,ImageBackground,ScrollView } from 'react-native';
 import { Produtes } from "./pages/Produtes";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -34,79 +35,83 @@ export default function App() {
   }, []);
   color = "#e11d48";
   return (
-    <NavigationContainer>
-      <PaperProvider className="h-full w-full bg-black drop-shadow-xl">
-        {user ? (
-          <Tab.Navigator
-            inactiveColor="black"
-            activeColor="#FF4500"
-            shifting={true}
-            activeIndicatorStyle={{ backgroundColor: "white" }}
-            barStyle={{
-              backgroundColor: "#fff",
-              borderTopColor: "gray",
-              borderTopWidth: 1,
-            }}
-          >
-            <Tab.Screen
-              name="Home"
-              component={Home}
-              options={{
-                tabBarIcon: ({ color }) => (
-                  <Entypo name="shop" size={24} color={color} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Food"
-              component={Produtes}
-              options={({ route }) => ({
-                tabBarIcon: ({ color }) => (
-                  <Ionicons name="fast-food-sharp" size={24} color={color} />
-                ),
-              })}
-            />
-            <Tab.Screen
-              name="checkout"
-              component={Produtes}
-              options={{
-                tabBarIcon: ({ color }) => (
-                  <Fontisto
-                    name="shopping-basket-add"
-                    size={24}
-                    color={color}
-                  />
-                ),
-              }}
-            />
-            {/* <Tab.Screen
-              name="Scan"
-              component={Produtes}
-              options={{
-                tabBarIcon: ({ color }) => (
-                  <MaterialIcons
-                    name="qr-code-scanner"
-                    size={24}
-                    color={color}
-                  />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="LogOut"
-              component={LogoutScreen}
-              options={{
-                tabBarIcon: ({ color }) => (
-                  <FontAwesome name="user" size={24} color={color} />
-                ),
-              }}
-            /> */}
-          </Tab.Navigator>
-        ) : (
-          <AuthStack />
-        )}
-      </PaperProvider>
-    </NavigationContainer>
+    <View>
+      <Text >THe app is working fine</Text>
+     
+    </View>
+    // <NavigationContainer>
+    //   <PaperProvider className="h-full w-full bg-black drop-shadow-xl">
+    //     {user ? (
+    //       <Tab.Navigator
+    //         inactiveColor="black"
+    //         activeColor="#FF4500"
+    //         shifting={true}
+    //         activeIndicatorStyle={{ backgroundColor: "white" }}
+    //         barStyle={{
+    //           backgroundColor: "#fff",
+    //           borderTopColor: "gray",
+    //           borderTopWidth: 1,
+    //         }}
+    //       >
+    //         <Tab.Screen
+    //           name="Home"
+    //           component={Home}
+    //           options={{
+    //             tabBarIcon: ({ color }) => (
+    //               <Entypo name="shop" size={24} color={color} />
+    //             ),
+    //           }}
+    //         />
+    //         <Tab.Screen
+    //           name="Food"
+    //           component={Produtes}
+    //           options={({ route }) => ({
+    //             tabBarIcon: ({ color }) => (
+    //               <Ionicons name="fast-food-sharp" size={24} color={color} />
+    //             ),
+    //           })}
+    //         />
+    //         <Tab.Screen
+    //           name="checkout"
+    //           component={Produtes}
+    //           options={{
+    //             tabBarIcon: ({ color }) => (
+    //               <Fontisto
+    //                 name="shopping-basket-add"
+    //                 size={24}
+    //                 color={color}
+    //               />
+    //             ),
+    //           }}
+    //         />
+    //         {/* <Tab.Screen
+    //           name="Scan"
+    //           component={Produtes}
+    //           options={{
+    //             tabBarIcon: ({ color }) => (
+    //               <MaterialIcons
+    //                 name="qr-code-scanner"
+    //                 size={24}
+    //                 color={color}
+    //               />
+    //             ),
+    //           }}
+    //         />
+    //         <Tab.Screen
+    //           name="LogOut"
+    //           component={LogoutScreen}
+    //           options={{
+    //             tabBarIcon: ({ color }) => (
+    //               <FontAwesome name="user" size={24} color={color} />
+    //             ),
+    //           }}
+    //         /> */}
+    //       </Tab.Navigator>
+    //     ) : (
+    //       <AuthStack />
+    //     )}
+    //   </PaperProvider>
+    // </NavigationContainer>
     // <View className="" >
     //   {/* <Text className="text-white">Open up App.js to start working on your app!</Text> */}
     //   {/* <StatusBar style="auto" /> */}
