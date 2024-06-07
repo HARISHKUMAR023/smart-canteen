@@ -1,8 +1,8 @@
 // Logout.js
 
 import React from 'react';
-import { View, Text, Button,StyleSheet,Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text,StyleSheet,Pressable } from 'react-native';
+
 import { getAuth, signOut } from "firebase/auth";
 
 const HandleSignOut = () => {
@@ -24,8 +24,7 @@ const LogoutScreen = () => {
   
       <Text className="font-semibold text-slate-50 text-center mr-2">Sign OUt </Text>
     </Pressable>
-      {/* <Button style={styles.btn} color={'#e80765'}  title="Sign Out" onPress={HandleSignOut} />
-      <Button style={styles.btn} color={'#e80765'} title="Cancel" onPress={() => navigation.goBack()} /> */}
+  
     </View>
   );
 };

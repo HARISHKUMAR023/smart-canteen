@@ -79,7 +79,7 @@ export default function App() {
                 ),
               }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
               name="Scan"
               component={Produtes}
               options={{
@@ -100,7 +100,7 @@ export default function App() {
                   <FontAwesome name="user" size={24} color={color} />
                 ),
               }}
-            />
+            /> */}
           </Tab.Navigator>
         ) : (
           <AuthStack />

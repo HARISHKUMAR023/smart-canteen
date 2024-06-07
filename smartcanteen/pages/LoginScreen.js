@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Pressable, Text ,ImageBackground } from 'react-native';
+import { View, TextInput, StyleSheet, Pressable, Text ,ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Image } from 'expo-image';
+
 import { Asset } from 'expo-asset';
-import { Ionicons } from '@expo/vector-icons';
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

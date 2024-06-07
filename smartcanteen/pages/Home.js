@@ -23,9 +23,9 @@ export const Home = () => {
 
      
      
-          <Category  />
+          {/* <Category  />
       <Info/>
-   
+    */}
   </View>
   )
 }
