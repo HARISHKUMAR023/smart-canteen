@@ -1,0 +1,44 @@
+const Order = require('../Model/Ordermodel');
+const AddToCart = require('../Model/Cartmodel');
+
+// Place a new order
+exports.placeOrder = async (req, res) => {
+  const { userId, items, totalPrice, status, shippingAddress } = req.body;
+  console.log(userId, items,  totalPrice, status, shippingAddress)
+  try {
+    // Create a new order
+    const newOrder = new Order({
+      user: userId,
+      items,
+      totalPrice,
+      status,
+      shippingAddress
+    });
+
+    await newOrder.save();
+
+    // You can also empty the cart after placing an order if necessary
+    await AddToCart.deleteMany({ user: userId });
+
+    res.status(201).json({ message: 'Order placed successfully', order: newOrder });
+  } catch (err) {
+    res.status(500).json({ message: 'Error placing order', error: err.message });
+  }
+};
+
+// Get all orders for a user
+exports.getOrdersForUser = async (req, res) => {
+  const userId = req.userId; // Extracted from JWT middleware
+
+  try {
+    const orders = await Order.find({ user: userId }).populate('products.product', 'name price');
+
+    if (orders.length === 0) {
+      return res.status(404).json({ message: 'No orders found for this user' });
+    }
+
+    res.status(200).json(orders);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching orders', error: err.message });
+  }
+};

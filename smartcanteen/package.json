@@ -28,7 +28,8 @@
     "react": "18.2.0",
     "react-native": "0.74.2",
     "react-native-paper": "^5.12.3",
-    "react-native-svg": "15.2.0"
+    "react-native-svg": "15.2.0",
+    "smartcanteen": "file:"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
