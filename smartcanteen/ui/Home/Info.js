@@ -6,7 +6,7 @@ export const Info = () => {
   return (
 <ScrollView>
 
-<View className="flex flex-row justify-between mx-4 p-4 bg-rose-600 rounded-md shadow-2xl drop-shadow-2xl">
+<View className="flex flex-row justify-between mx-4 p-4 bg-primary rounded-md shadow-2xl drop-shadow-2xl">
     <View>
     <Text className="font-bold text-white text-lg p-1">Claim Your Daily Pre Order</Text>
     <Text className="text-gray-300 font-bold p-1">With Smart Canteen</Text>

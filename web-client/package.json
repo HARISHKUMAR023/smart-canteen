@@ -16,7 +16,8 @@
     "flowbite-react": "^0.9.0",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "web-client": "file:"
   },
   "devDependencies": {
     "@types/node": "^20",

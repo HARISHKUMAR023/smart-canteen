@@ -3,6 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const productRoutes = require('./Routes/product.routes');
+const userauth = require('./Routes/user.routes');
+const orderRoutes = require('./Routes/orderRoutes');
+const cartRoutes = require('./Routes/cartRoutes');
 const path = require('path');
 const cors = require('cors');
 const app = express();
@@ -15,6 +18,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', userauth);
+app.use('/api/orders', orderRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Database connection
 mongoose.connect(process.env.MONGO_URI)

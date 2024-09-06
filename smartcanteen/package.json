@@ -9,21 +9,27 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/config-plugins": "^8.0.4",
     "@expo/vector-icons": "^14.0.1",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/material-bottom-tabs": "^6.2.28",
     "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "@react-navigation/stack": "^6.3.29",
     "axios": "^1.7.2",
-    "expo": "^51.0.9",
+    "expo": "~51.0.11",
     "expo-asset": "~10.0.6",
-    "expo-image": "~1.12.9",
+    "expo-image": "~1.12.11",
     "expo-images": "^1.0.0",
     "expo-status-bar": "~1.12.1",
-    "expo-updates": "~0.25.15",
+    "expo-updates": "~0.25.16",
+    "firebase": "^10.12.2",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.74.1",
+    "react-native": "0.74.2",
     "react-native-paper": "^5.12.3",
-    "react-native-svg": "15.2.0"
+    "react-native-svg": "15.2.0",
+    "smartcanteen": "file:"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
