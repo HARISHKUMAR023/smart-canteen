@@ -1,96 +1,35 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, Dimensions, Image, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { useSharedValue, useAnimatedScrollHandler, useAnimatedStyle, withSpring } from 'react-native-reanimated';
-
-const { width } = Dimensions.get('window');
-
-const images = [
-  { id: '1', uri: 'https://via.placeholder.com/800x400?text=Image+1' },
-  { id: '2', uri: 'https://via.placeholder.com/800x400?text=Image+2' },
-  { id: '3', uri: 'https://via.placeholder.com/800x400?text=Image+3' },
-];
+import React from 'react'
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { Image } from 'expo-image';
 
 const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollX = useSharedValue(0);
-  const flatListRef = useRef(null);
-
-  const handleScroll = useAnimatedScrollHandler((event) => {
-    scrollX.value = event.contentOffset.x;
-  });
-
-  useEffect(() => {
-    if (flatListRef.current) {
-      flatListRef.current.scrollToIndex({ index: currentIndex, animated: true });
-    }
-  }, [currentIndex]);
-
-  const handlePagination = (index) => {
-    setCurrentIndex(index);
-  };
-
-  const renderItem = ({ item }) => (
-    <View style={styles.slide}>
-      <Image source={{ uri: item.uri }} style={styles.image} />
-    </View>
-  );
-
-  const pagination = () => (
-    <View style={styles.pagination}>
-      {images.map((_, index) => (
-        <TouchableOpacity key={index} onPress={() => handlePagination(index)}>
-          <View style={[
-            styles.paginationDot,
-            { backgroundColor: currentIndex === index ? '#000' : '#ccc' },
-          ]} />
-        </TouchableOpacity>
-      ))}
-    </View>
-  );
-
   return (
     <View style={styles.container}>
-      <FlatList
-        data={images}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onScroll={handleScroll}
-        ref={flatListRef}
+      <Text style={styles.offer}>Promo</Text>
+      <Image
+        style={styles.image}
+        source={require('../assets/images/food1.jpg')}
       />
-      {pagination()}
     </View>
   );
-};
+}
+
+export default Carousel;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginBottom: 10, // Ensures there's spacing between multiple carousels
   },
-  slide: {
-    width,
-    justifyContent: 'center',
-    alignItems: 'center',
+  offer: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginBottom: 5,
+    marginTop:5,
   },
   image: {
     width: '100%',
-    height: 250,
-    borderRadius: 8,
-  },
-  pagination: {
-    position: 'absolute',
-    bottom: 10,
-    flexDirection: 'row',
-    alignSelf: 'center',
-  },
-  paginationDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    margin: 5,
+    height: Dimensions.get('window').height * 0.25, // Set height dynamically (25% of the screen height)
+    borderRadius: 10,
   },
 });
-
-export default Carousel;
