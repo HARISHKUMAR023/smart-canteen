@@ -1,26 +1,57 @@
 const AddToCart = require('../Model/Cartmodel');
-
+const Product = require('../Model/product.model')
 // Add a product to the cart
 exports.addToCart = async (req, res) => {
   const { userId, productId, quantity } = req.body;
+  console.log(userId,productId, quantity)
 
-  try {
+   
+  
+  try { 
+    const product = await Product.findOne({ _id: productId });
+    
+    if (!product) {
+      return res.status(200).json({ message: 'Product not found' });
+    }
+    
+    // Calculate total price for the product (product price * quantity)
+    const itemTotalPrice = product.price * quantity;
+    // console.log('Item Total Price:', itemTotalPrice);
     // Check if the item is already in the cart
-    let cartItem = await AddToCart.findOne({ user: userId, 'products.product': productId });
+    let cartItem = await AddToCart.findOne({ user: userId, 'items.product': productId });
+    // console.log(cartItem
 
+    // )
+    // console.log(cartItem)
+    //  let productdl = await Poduct.findOne({ _id: productId });
+      //  console.log(productdl.price)
+      //  const tm = productdl.price * quantity 
+      //  console.log(tm)
     if (cartItem) {
-      // If product already exists, update the quantity
+  
       await AddToCart.updateOne(
-        { user: userId, 'products.product': productId },
-        { $inc: { 'products.$.quantity': quantity } }
+        { user: userId, 'items.product': productId },
+        { $set: { 'items.$.quantity': quantity },
+        $inc:{'totalPrice': itemTotalPrice}
+      
+      },
+       
       );
       res.status(200).json({ message: 'Cart updated successfully' });
     } else {
       // If product is not in the cart, add it
       await AddToCart.findOneAndUpdate(
         { user: userId },
-        { $push: { products: { product: productId, quantity } } },
+        { $push: { items: { product: productId, quantity, totalPrice: itemTotalPrice  } } },
         { new: true, upsert: true }  // Create a new cart if it doesn't exist
+      );
+      const updatedCart = await AddToCart.findOne({ user: userId });
+      const totalCartPrice = updatedCart.items.reduce((sum, item) => sum + item.totalPrice, 0);
+  
+      // Update the cart's total price
+      await AddToCart.updateOne(
+        { user: userId },
+        { $set: { 'totalPrice': totalCartPrice } }
       );
       res.status(201).json({ message: 'Product added to cart successfully' });
     }
@@ -32,12 +63,12 @@ exports.addToCart = async (req, res) => {
 // Get cart items for a user
 exports.getCart = async (req, res) => {
   const userId = req.userId;
-
+  console.log(userId)
   try {
-    const cart = await AddToCart.findOne({ user: userId }).populate('products.product', 'name price imageUrl');
+    const cart = await AddToCart.findOne({ user: userId }).populate('items.product', 'name price imageUrl');
 
-    if (!cart || cart.products.length === 0) {
-      return res.status(404).json({ message: 'Cart is empty' });
+    if (!cart || cart.items.length === 0) {
+      return res.status(200).json({ message: 'Cart is empty' });
     }
 
     res.status(200).json(cart);

@@ -2,7 +2,8 @@ import { Tabs } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { View } from 'react-native';
-
+import Fontisto from '@expo/vector-icons/Fontisto';
+import Entypo from '@expo/vector-icons/Entypo';
 export default function TabLayout() {
   return (
     <View style={{ flex: 1, backgroundColor: "#181f3c" }}>
@@ -33,9 +34,20 @@ export default function TabLayout() {
           options={{ 
             title: "",
             tabBarIcon: ({ color }) => (
-              <Ionicons name="fast-food" size={24} color={color} />  // Use the dynamic color prop
+              <Fontisto name="shopping-store" size={24} color={color} />
+
+              // <Ionicons name="fast-food" size={24} color={color} />  // Use the dynamic color prop
             ),
           }}
+        />
+          <Tabs.Screen 
+          name="product" 
+          options={{
+            title: "",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="fast-food" size={24} color={color} />  // Use the dynamic color prop
+            ),
+          }} 
         />
         
         <Tabs.Screen 
@@ -43,10 +55,21 @@ export default function TabLayout() {
           options={{
             title: "",
             tabBarIcon: ({ color }) => (
+              <Entypo name="shopping-cart" size={24} color={color} />  // Use the dynamic color prop
+            ),
+          }} 
+        />
+        <Tabs.Screen 
+          name="settings" 
+          options={{
+            title: "",
+            tabBarIcon: ({ color }) => (
               <FontAwesome name="user-circle-o" size={24} color={color} />  // Use the dynamic color prop
             ),
           }} 
         />
+     
+      
       </Tabs>
     </View>
   );

@@ -8,8 +8,13 @@ const orderRoutes = require('./Routes/orderRoutes');
 const cartRoutes = require('./Routes/cartRoutes');
 const path = require('path');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
 const app = express();
 app.use(cors()); 
+
+dotenv.config();
+
 // Middleware
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

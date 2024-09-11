@@ -4,10 +4,25 @@ import { View, Text, StyleSheet, Button, Image, FlatList ,TextInput} from 'react
 import Entypo from '@expo/vector-icons/Entypo';
 import { Ionicons } from '@expo/vector-icons';
 import Carousel from '@/components/Carousel';
-
+import FoodCard from '@/components/Card';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
 export default function FoodScreen() {
   const [foods, setFoods] = useState([]);
+  const router = useRouter();
+ 
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = await AsyncStorage.getItem('authToken');
 
+      if (!token) {
+        // If there's no token, redirect to the login page
+        router.push('/login');
+      }
+    };
+
+    checkAuth();
+  }, []);
   // Fetch food data from API
   // useEffect(() => {
   //   const fetchFoods = async () => {
@@ -64,7 +79,13 @@ export default function FoodScreen() {
         placeholderTextColor="#788bb2"
       />
     </View>
+    {/* <Carousel/> */}
+ 
     <Carousel/>
+    {/* <Carousel/> */}
+    <FoodCard/>
+   
+
       {/* <FlatList
         data={foods}
         renderItem={renderItem}
@@ -110,6 +131,8 @@ fontWeight:'bold'
     paddingVertical: 5,
   },
   searchInput: {
+    // 
+    
     flex: 1,
     padding: 10,
     color: '#788bb2',
