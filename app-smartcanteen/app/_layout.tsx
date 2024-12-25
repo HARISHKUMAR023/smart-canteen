@@ -17,6 +17,7 @@ export default function Layout() {
       {/* Optionally configure static options outside the route.*/}
       <Stack.Screen name="login"  />
       <Stack.Screen name="(tabs)"  />
+      
     </Stack>
   );
 }

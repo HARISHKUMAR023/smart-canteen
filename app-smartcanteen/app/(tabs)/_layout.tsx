@@ -1,9 +1,9 @@
-import { Tabs } from 'expo-router';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { View } from 'react-native';
-import Fontisto from '@expo/vector-icons/Fontisto';
 import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Fontisto from '@expo/vector-icons/Fontisto';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Tabs } from 'expo-router';
+import { View } from 'react-native';
 export default function TabLayout() {
   return (
     <View style={{ flex: 1, backgroundColor: "#181f3c" }}>
@@ -68,6 +68,15 @@ export default function TabLayout() {
             ),
           }} 
         />
+        <Tabs.Screen 
+  name="placeOrder" 
+  options={{
+    title: "",
+    tabBarStyle: { display: 'none' }, // Hides the TabBar
+    // tabBarButton: () => null,        // Completely hides the TabBar button
+  }} 
+/>
+
      
       
       </Tabs>
