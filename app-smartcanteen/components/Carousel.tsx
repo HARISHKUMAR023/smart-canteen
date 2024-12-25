@@ -1,6 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Image } from 'expo-image';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 const Carousel = () => {
   return (

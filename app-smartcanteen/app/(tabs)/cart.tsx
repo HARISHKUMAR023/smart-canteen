@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, Button, ActivityIndicator, Alert } from 'react-native';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, Button, FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
 // Define the types for the cart item and API response
 interface CartItem {

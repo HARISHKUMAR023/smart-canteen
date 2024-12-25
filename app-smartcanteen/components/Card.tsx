@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
-import { jwtDecode } from "jwt-decode";// Correct jwt-decode import
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { jwtDecode } from "jwt-decode"; // Correct jwt-decode import
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // Define the Food type for API data
 interface Food {

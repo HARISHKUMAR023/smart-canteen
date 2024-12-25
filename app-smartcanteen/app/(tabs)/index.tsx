@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { View, Text, StyleSheet, Button, Image, FlatList ,TextInput} from 'react-native';
-import Entypo from '@expo/vector-icons/Entypo';
-import { Ionicons } from '@expo/vector-icons';
-import Carousel from '@/components/Carousel';
 import FoodCard from '@/components/Card';
+import Carousel from '@/components/Carousel';
+import { Ionicons } from '@expo/vector-icons';
+import Entypo from '@expo/vector-icons/Entypo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 export default function FoodScreen() {
   const [foods, setFoods] = useState([]);
   const router = useRouter();
