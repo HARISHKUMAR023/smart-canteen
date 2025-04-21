@@ -33,7 +33,7 @@ export default function HomeLayout() {
   const handleLogin = async () => {
     console.log(phoneNumber, password);
     try {
-      const response = await fetch('http://192.168.136.92:5000/api/auth/login', {
+      const response = await fetch('http://192.168.145.92:5000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -30,7 +30,7 @@ const FoodCard: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Food[]>('http://192.168.136.92:5000/api/products');
+        const response = await axios.get<Food[]>('http://192.168.145.92:5000/api/products');
         setFoods(response.data);
       } catch (error) {
         console.error('Error fetching food data:', error);
@@ -102,7 +102,7 @@ const FoodCard: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://192.168.136.92:5000/api/cart/add',cartData);
+      const response = await axios.post('http://192.168.145.92:5000/api/cart/add',cartData);
       console.log(cartData)
       console.log('Added to cart:', response.data);
     } catch (error) {
@@ -120,7 +120,7 @@ const FoodCard: React.FC = () => {
         >
           <View style={styles.cardContent}>
             <Image
-              source={{ uri: `http://192.168.136.92:5000/${food.imageUrl}` }}
+              source={{ uri: `http://192.168.145.92:5000/${food.imageUrl}` }}
               style={styles.image}
             />
             <Text style={styles.foodName}>{food.name}</Text>

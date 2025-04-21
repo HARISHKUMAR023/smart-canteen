@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, Button, ActivityIndicator, Alert } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import * as Linking from 'expo-linking'; // Add this import
 // Define the types for the cart item and API response
 interface CartItem {
   id: string;
@@ -35,7 +35,7 @@ export default function Cart() {
       const token = await AsyncStorage.getItem('authToken'); // Get the token from AsyncStorage
       console.log(token);
       if (token) {
-        const response = await axios.get<CartResponse>('http://192.168.136.92:5000/api/cart', {
+        const response = await axios.get<CartResponse>('http://192.168.145.92:5000/api/cart', {
           headers: {
             Authorization: `${token}`, // Pass the token as a Bearer token in the Authorization header
           },
@@ -48,7 +48,7 @@ export default function Cart() {
             name: item.product.name,
             price: item.product.price,
             quantity: item.quantity,
-            imageUrl: `http://192.168.136.92:5000/${item.product.imageUrl}`, // Ensure the full URL for the image
+            imageUrl: `http://192.168.145.92:5000/${item.product.imageUrl}`, // Ensure the full URL for the image
           }));
           setCartItems(mappedItems);
         } else {
@@ -79,34 +79,35 @@ export default function Cart() {
 
   const handlePlaceOrder = async () => {
     try {
-      const token = await AsyncStorage.getItem('authToken'); // Get the token from AsyncStorage
+      const token = await AsyncStorage.getItem('authToken');
       if (!token) {
-        console.log('No auth token found.');
+        Alert.alert('Authentication error', 'You must be logged in to place an order.');
         return;
       }
-
-      const orderData = {
-        items: cartItems.map(item => ({
-          product: item.id,
-          quantity: item.quantity,
-        })),
-        totalPrice: totalAmount, // Add the total amount
-        status: "Pending",
-        shippingAddress: "Testing",
-      };
-
-      const response = await axios.post('http://192.168.136.92:5000/api/orders', orderData, {
+  
+      const orderItems = cartItems.map(item => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        imageUrl: item.imageUrl,
+      }));
+  
+      const response = await axios.post('http://192.168.145.92:5000/api/create-checkout-session', { items: orderItems }, {
         headers: {
-          Authorization: `${token}`, // Send token in the Authorization header
-          'Content-Type': 'application/json',
+          Authorization: `${token}`,
         },
       });
-
-      fetchCartItems(); // Refresh cart items
-
-      Alert.alert(response.data.message);
-    } catch (err: any) {
-      console.error('Error placing order:', err);
+  
+      const { url } = response.data;
+  
+      if (url) {
+        Linking.openURL(url); // This opens Stripe Checkout in a browser
+      } else {
+        Alert.alert('Error', 'Failed to load payment page.');
+      }
+    } catch (err) {
+      console.error('Checkout error:', err);
+      Alert.alert('Error', 'Something went wrong while processing your order.');
     }
   };
 
