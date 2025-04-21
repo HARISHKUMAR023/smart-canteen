@@ -48,7 +48,7 @@ export default function Cart() {
             name: item.product.name,
             price: item.product.price,
             quantity: item.quantity,
-            imageUrl: `http://192.168.145.92:5000/${item.product.imageUrl}`, // Ensure the full URL for the image
+            imageUrl: `http://192.168.214.92:5000/${item.product.imageUrl}`, // Ensure the full URL for the image
           }));
           setCartItems(mappedItems);
         } else {
@@ -92,7 +92,7 @@ export default function Cart() {
         imageUrl: item.imageUrl,
       }));
   
-      const response = await axios.post('http://192.168.145.92:5000/api/create-checkout-session', { items: orderItems }, {
+      const response = await axios.post('http://192.168.214.92:5000/api/create-checkout-session', { items: orderItems }, {
         headers: {
           Authorization: `${token}`,
         },
